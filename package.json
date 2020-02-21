@@ -1,0 +1,24 @@
+{
+  "name": "jackhuaui",
+  "version": "0.1.0",
+  "description": "react web ui",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xuhua1/huaui.git"
+  },
+  "keywords": [
+    "react",
+    "web",
+    "ui"
+  ],
+  "author": "xuhua",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xuhua1/huaui/issues"
+  },
+  "homepage": "https://github.com/xuhua1/huaui#readme"
+}
