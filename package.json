@@ -1,24 +1,28 @@
 {
-  "name": "jackhuaui",
-  "version": "0.1.0",
-  "description": "react web ui",
-  "main": "index.js",
+  "name": "xhuaui",
+  "version": "1.0.0",
+  "main": "lib/bundle.js",
+  "repository": "https://github.com/xuhua1/huaui.git",
+  "author": "许华 <3140877089@qq.com>",
+  "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "yarn run rollup -c",
+    "start": "yarn run rollup -c -w"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/xuhua1/huaui.git"
-  },
+  "description": "一个简单的React UI 框架",
   "keywords": [
     "react",
-    "web",
-    "ui"
+    "webUI",
+    "components"
   ],
-  "author": "xuhua",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/xuhua1/huaui/issues"
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/preset-react": "^7.8.3",
+    "rollup": "^1.31.1",
+    "rollup-plugin-babel": "^4.3.3"
   },
-  "homepage": "https://github.com/xuhua1/huaui#readme"
+  "dependencies": {
+    "styled-components": "^5.0.1"
+  }
 }
