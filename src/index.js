@@ -1,7 +1,7 @@
-import Switch from './components/Switch';
-import Button from './components/Button';
+import SearchBar from './components/search-bar/index'
+import Button from './components/button/index'
 
 export {
-  Switch,
+  SearchBar,
   Button
 }

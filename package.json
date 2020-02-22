@@ -1,12 +1,12 @@
 {
   "name": "xhuaui",
-  "version": "1.0.0",
-  "main": "lib/bundle.js",
+  "version": "1.1.0",
+  "main": "es/index/index.js",
   "repository": "https://github.com/xuhua1/huaui.git",
   "author": "许华 <3140877089@qq.com>",
   "license": "MIT",
   "scripts": {
-    "build": "yarn run rollup -c",
+    "build": "yarn run rollup -c --sourcemap",
     "start": "yarn run rollup -c -w"
   },
   "description": "一个简单的React UI 框架",
@@ -19,11 +19,16 @@
     "@babel/core": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
     "@babel/preset-react": "^7.8.3",
+    "less": "^3.11.1",
     "rollup": "^1.31.1",
     "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-clear": "^2.0.7"
+    "rollup-plugin-clear": "^2.0.7",
+    "rollup-plugin-postcss": "^2.0.6",
+    "rollup-plugin-uglify": "^6.0.4"
   },
   "dependencies": {
-    "styled-components": "^5.0.1"
+    "classnames": "^2.2.6",
+    "prop-types": "^15.7.2",
+    "rmc-feedback": "^2.0.0"
   }
 }
