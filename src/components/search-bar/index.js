@@ -31,8 +31,8 @@ const SearchBar = (props) => {
   let blurFromOnClear = false // 是否确认失去焦点（点击清除/点击取消)
   let rightBtnInitMarginleft = null // 取消按钮
   // hook函数
-  useEffect(()=>{
-    if(autoFocus && inputRef){
+  useEffect(() => {
+    if (autoFocus && inputRef) {
       inputRef.current.focus()
     }
     if (rightBtnRef) {
@@ -48,8 +48,8 @@ const SearchBar = (props) => {
   }, [])
   // 组件更新
   useEffect(() => {
-    if(syntheticPhRef) {
-      if(
+    if (syntheticPhRef) {
+      if (
         inputContainerRef &&
         inputContainerRef.current.className.indexOf(
           `${prefixCls}-start`,
@@ -57,9 +57,9 @@ const SearchBar = (props) => {
       ) {
         // 检测是否包含名为 ${props.prefixCls}-start 样式，生成动画
         // offsetWidth 某些时候是向上取整，某些时候是向下取整，不能用
-        if(syntheticPhContainerRef) {
+        if (syntheticPhContainerRef) {
           const realWidth = syntheticPhContainerRef.current.getBoundingClientRect()
-          .width; // 包含小数
+            .width; // 包含小数
           syntheticPhRef.current.style.width = `${Math.ceil(realWidth)}px`;
         }
         if (!showCancelButton && rightBtnRef) {
@@ -79,7 +79,7 @@ const SearchBar = (props) => {
   })
   // input setFocus
   const setInputfocus = () => {
-    if(inputRef){
+    if (inputRef) {
       inputRef.current.focus();
     }
   }
@@ -92,7 +92,7 @@ const SearchBar = (props) => {
     }
   }
   const onChange = (e) => {
-    if(!focus) setFocus(true)
+    if (!focus) setFocus(true)
     const { value } = e.target
     props.onChange(value)
   }
@@ -103,7 +103,7 @@ const SearchBar = (props) => {
   const onBlur = () => {
     // 等待doClear, onCancel 函数代码执行完毕后执行
     onBlurTimeout = setTimeout(() => {
-      if(!blurFromOnClear && document.activeElement !== inputRef) setFocus(false)
+      if (!blurFromOnClear && document.activeElement !== inputRef) setFocus(false)
       blurFromOnClear = false
     }, 1);
     // fix autoFocus item blur with flash
@@ -112,7 +112,7 @@ const SearchBar = (props) => {
       if (document.body) {
         document.body.scrollTop = document.body.scrollTop;
       }
-    },100);
+    }, 100);
     props.onBlur();
   }
   const doClear = () => {
@@ -199,7 +199,10 @@ const SearchBar = (props) => {
 
 SearchBar.propTypes = {
   prefixCls: PropTypes.string,
-  className: PropTypes.string,
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object
+  ]),
   style: PropTypes.object,
   value: PropTypes.string,
   placeholder: PropTypes.string,
