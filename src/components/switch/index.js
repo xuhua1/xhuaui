@@ -77,10 +77,7 @@ const Switch = (props) => {
 
 Switch.propTypes = {
   prefixCls: PropTypes.string,
-  className: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object,
-  ]),
+  className: PropTypes.string,
   color: PropTypes.string,
   style: PropTypes.object,
   name: PropTypes.string,

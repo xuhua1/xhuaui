@@ -51,10 +51,7 @@ const Button = (props) => {
 
 Button.propTypes = {
   prefixCls: PropTypes.string,
-  className: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object
-  ]),
+  className: PropTypes.string,
   activeClassName: PropTypes.string,
   activeStyle: PropTypes.object,
   inline: PropTypes.bool,

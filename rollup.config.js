@@ -39,8 +39,9 @@ export default {
   ],
   external: [
     'react',
+    'react-router-dom',
     'rmc-feedback',
     'prop-types',
-    'classnames'
+    'classnames',
   ]
 }

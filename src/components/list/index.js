@@ -39,10 +39,7 @@ List.Item = Item
 
 List.propTypes = {
   prefixCls: PropTypes.string,
-  className: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object
-  ]),
+  className: PropTypes.string,
   style: PropTypes.object,
   children: PropTypes.node,
   renderHeader: PropTypes.elementType,

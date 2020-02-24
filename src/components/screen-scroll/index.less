@@ -1,0 +1,31 @@
+@import '../../style/themes/default';
+
+@screenScroolPrefixCls: xh-screen-scrool;
+
+.@{screenScroolPrefixCls} {
+
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: content-box;
+
+  &-wrap {
+
+    touch-action: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    position: absolute;
+    left: 0;
+
+    &-item {
+      position: relative;
+      box-sizing: border-box;
+      overflow: hidden;
+      height: 100%;
+      margin: 0;
+    }
+  }
+}

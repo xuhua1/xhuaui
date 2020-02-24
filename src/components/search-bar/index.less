@@ -1,4 +1,3 @@
-@import '../../style/mixins/icon';
 @import '../../style/themes/default';
 
 @searchPrefixCls: xh-search;
@@ -46,14 +45,15 @@
 
       &-icon {
         display: inline-block;
+        box-sizing: content-box;
         margin-right: @h-spacing-sm;
         width: @icon-size-xxs;
         height: @icon-size-xxs;
-        overflow: hidden;
-        vertical-align: -2.5 * @hd;
-        background-repeat: no-repeat;
-        background-size: @icon-size-xxs auto;
-        .encoded-svg-background('search_bar_search');
+        // overflow: hidden;
+        // vertical-align: -2.5 * @hd;
+        // background-repeat: no-repeat;
+        // background-size: @icon-size-xxs auto;
+        // .encoded-svg-background('search_bar_search');
       }
 
       &-placeholder {
@@ -98,16 +98,16 @@
       border-radius: @radius-circle;
       top: 0;
       right: 0;
-      background-color: transparent;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: @icon-size-xxs @icon-size-xxs;
+      // background-color: transparent;
+      // background-position: center;
+      // background-repeat: no-repeat;
+      // background-size: @icon-size-xxs @icon-size-xxs;
       transition: all .3s;
-      .encoded-svg-background('search_bar_clear');
+      // .encoded-svg-background('search_bar_clear');
 
-      &-active {
-        .encoded-svg-background('search_bar_clear_active');
-      }
+      // &-active {
+      //   .encoded-svg-background('search_bar_clear_active');
+      // }
 
       &-show {
         display: block;

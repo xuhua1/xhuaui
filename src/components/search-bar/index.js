@@ -16,6 +16,8 @@ const SearchBar = (props) => {
     disabled,
     autoFocus,
     maxLength,
+    searchIcon,
+    cancelIcon,
   } = props;
   // 处理动画
   const inputContainerRef = useRef()
@@ -158,7 +160,9 @@ const SearchBar = (props) => {
             className={`${prefixCls}-synthetic-ph-container`}
             ref={syntheticPhContainerRef}
           >
-            <i className={`${prefixCls}-synthetic-ph-icon`} />
+            <span className={`${prefixCls}-synthetic-ph-icon`}>
+              {searchIcon}
+            </span>
             <span
               className={`${prefixCls}-synthetic-ph-placeholder`}
               // tslint:disable-next-line:jsx-no-multiline-js
@@ -183,7 +187,9 @@ const SearchBar = (props) => {
           maxLength={maxLength}
         />
         <TouchFeedback activeClassName={`${prefixCls}-clear-active`}>
-          <a onClick={doClear} className={clearCls} />
+          <a onClick={doClear} className={clearCls}>
+           {cancelIcon}
+          </a>
         </TouchFeedback>
       </div>
       <div
@@ -199,10 +205,7 @@ const SearchBar = (props) => {
 
 SearchBar.propTypes = {
   prefixCls: PropTypes.string,
-  className: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object
-  ]),
+  className: PropTypes.string,
   style: PropTypes.object,
   value: PropTypes.string,
   placeholder: PropTypes.string,
@@ -216,6 +219,8 @@ SearchBar.propTypes = {
   disabled: PropTypes.bool,
   autoFocus: PropTypes.bool,
   maxLength: PropTypes.number,
+  searchIcon: PropTypes.elementType,
+  cancelIcon: PropTypes.elementType,
 }
 
 function noop() { }
