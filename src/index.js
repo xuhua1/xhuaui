@@ -8,6 +8,8 @@ import Swiper from './components/swiper/index'
 import ScreenScroll from './components/screen-scroll/index'
 import Input from './components/input/index'
 import TextArea from './components/textarea/index'
+import ImagePicker from './components/image-picker/index'
+import Flex from './components/flex/index'
 
 export {
   Button,
@@ -20,4 +22,6 @@ export {
   ScreenScroll,
   Input,
   TextArea,
+  ImagePicker,
+  Flex,
 }
