@@ -1,0 +1,62 @@
+@import '../../style/themes/default';
+
+@inputPrefixCls: xh-input;
+
+.@{inputPrefixCls}{
+
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+  box-sizing: border-box;
+
+  &-control {
+    font-size: @input-font-size;
+    flex: 1;
+
+    input {
+      color: @color-text-base;
+      font-size: @font-size-heading;
+      appearance: none;
+      width: 100%;
+      padding: 2 * @hd 0;
+      border: 0;
+      background-color: transparent;
+      line-height: @line-height-base;
+      box-sizing: border-box;
+
+      &::placeholder {
+        color: @color-text-placeholder;
+        line-height: 1.2;
+      }
+
+      &:disabled {
+        color: @color-text-disabled;
+        background-color: #fff;
+      }
+    }
+  }
+
+  &-clear {
+    display: none;
+    width: @icon-size-sm;
+    height: @icon-size-sm;
+    line-height: @icon-size-sm;
+    border-radius: @radius-circle;
+    overflow: hidden;
+    font-style: normal;
+    color: @fill-base;
+    text-align: center;
+    background-color: @color-text-placeholder;
+    &-active {
+      background-color: @input-color-icon-tap;
+    }
+  }
+}
+
+.@{inputPrefixCls}-clear-focus {
+  .@{inputPrefixCls}-clear {
+    display: block;
+  }
+}

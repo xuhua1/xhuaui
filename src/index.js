@@ -6,6 +6,8 @@ import TabBar from './components/tab-bar/index'
 import Spin from './components/spin/index'
 import Swiper from './components/swiper/index'
 import ScreenScroll from './components/screen-scroll/index'
+import Input from './components/input/index'
+import TextArea from './components/textarea/index'
 
 export {
   Button,
@@ -16,4 +18,6 @@ export {
   Spin,
   Swiper,
   ScreenScroll,
+  Input,
+  TextArea,
 }

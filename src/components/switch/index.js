@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import React from 'react'
+import React, { useCallback, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import './index.less'
 
@@ -15,29 +15,33 @@ const Switch = (props) => {
     ...restProps
   } = props
 
-  const onChange = (e) => {
+  const onChange = useCallback((e) => {
     const { checked } = e.target;
     props.onChange(checked)
-  }
+  }, [props.onChange])
 
-  const onClick = (e) => {
+  const onClick = useCallback((e) => {
     let val
-    if(e && e.target && e.target.checked !== undefined){
+    if (e && e.target && e.target.checked !== undefined) {
       val = e.target.checked
     } else {
       val = checked
     }
     props.onClick(val)
-  }
+  }, [props.onClick])
 
-  const wrapCls = classnames(prefixCls, className, {
-    [`${prefixCls}-android`]: platform === 'android',
-  });
+  const wrapCls = useMemo(
+    () => classnames(prefixCls, className, {
+      [`${prefixCls}-android`]: platform === 'android',
+    }), [prefixCls, className, platform]
+  )
 
   // 样式
-  const fackInputCls = classnames('checkbox', {
-    [`checkbox-disabled`]: disabled,
-  });
+  const fackInputCls = useMemo(
+    () => classnames('checkbox', {
+      [`checkbox-disabled`]: disabled,
+    }), [prefixCls, disabled]
+  )
   const globalProps = Object.keys(restProps).reduce((prev, key) => {
     if (
       key.substr(0, 5) === 'aria-' ||
@@ -48,10 +52,14 @@ const Switch = (props) => {
     }
     return prev;
   }, {});
-  const style = props.style || {};
-  if (color && checked) {
-    style.backgroundColor = color;
-  }
+
+  const style = useMemo(()=>{
+    const sy = props.style || {}
+    if (color && checked) {
+      sy.backgroundColor = color;
+    }
+    return sy
+  }, [props.style, color, checked])
 
   return (
     <label className={wrapCls}>

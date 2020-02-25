@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import React from 'react'
+import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
 import Item from './ListItem'
 import './index.less'
@@ -14,7 +14,10 @@ const List = (props) => {
     renderFooter,
     ...restProps
   } = props
-  const wrapCls = classnames(prefixCls, className)
+
+  const wrapCls =useMemo(() =>{
+    return classnames(prefixCls, className)
+  }, [prefixCls, className])
 
   return (
     <div className={wrapCls} style={style} {...restProps}>
@@ -42,8 +45,8 @@ List.propTypes = {
   className: PropTypes.string,
   style: PropTypes.object,
   children: PropTypes.node,
-  renderHeader: PropTypes.elementType,
-  renderFooter: PropTypes.elementType,
+  renderHeader: PropTypes.node,
+  renderFooter: PropTypes.node,
 }
 
 List.defaultProps = {

@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import TouchFeedback from 'rmc-feedback'
 
@@ -21,15 +21,15 @@ const ListItem = (props) => {
     ...restProps
   } = props
   //state
-  const [coverRippleStyle, setCoverRippleStyle] = useState({ display: 'none'})
+  const [coverRippleStyle, setCoverRippleStyle] = useState({ display: 'none' })
   const [RippleClicked, setRippleClicked] = useState(false)
 
   // 定时器
   let debounceTimeout = null
   // 卸载后清除定时器
-  useEffect(()=>{
-    return ()=>{
-      if(debounceTimeout){
+  useEffect(() => {
+    return () => {
+      if (debounceTimeout) {
         clearTimeout(debounceTimeout);
         debounceTimeout = null;
       }
@@ -38,8 +38,8 @@ const ListItem = (props) => {
 
   const onClick = (e) => {
     const isAndroid = platform === 'android'
-    if(!!props.onClick && isAndroid){
-      if(debounceTimeout){
+    if (!!props.onClick && isAndroid) {
+      if (debounceTimeout) {
         clearTimeout(debounceTimeout)
         debounceTimeout = null
       }
@@ -57,36 +57,43 @@ const ListItem = (props) => {
       setCoverRippleStyle(coverRippleStyle)
       setRippleClicked(true)
       debounceTimeout = setTimeout(() => {
-        setCoverRippleStyle({ display: 'none'})
+        setCoverRippleStyle({ display: 'none' })
         setRippleClicked(false)
       }, 1000);
     }
-    if(props.onClick) {
+    if (props.onClick) {
       props.onClick(e)
     }
   }
 
   // 样式
-  const wrapCls = classnames(`${prefixCls}-item`, className, {
-    [`${prefixCls}-item-disabled`]: disabled,
-    [`${prefixCls}-item-error`]: error,
-    [`${prefixCls}-item-top`]: align === 'top',
-    [`${prefixCls}-item-middle`]: align === 'middle',
-    [`${prefixCls}-item-bottom`]: align === 'bottom',
-  })
-  const rippleCls = classnames(`${prefixCls}-ripple`, {
-    [`${prefixCls}-ripple-animate`]: RippleClicked,
-  })
-  const lineCls = classnames(`${prefixCls}-line`, {
-    [`${prefixCls}-line-multiple`]: multipleLine,
-    [`${prefixCls}-line-wrap`]: wrap,
-  })
-  const arrowCls = classnames(`${prefixCls}-arrow`, {
-    [`${prefixCls}-arrow-horizontal`]: arrow === 'horizontal',
-    [`${prefixCls}-arrow-vertical`]: arrow === 'down' || arrow === 'up',
-    [`${prefixCls}-arrow-vertical-up`]: arrow === 'up',
-  })
-
+  const wrapCls = useMemo(
+    () => classnames(`${prefixCls}-item`, className, {
+      [`${prefixCls}-item-disabled`]: disabled,
+      [`${prefixCls}-item-error`]: error,
+      [`${prefixCls}-item-top`]: align === 'top',
+      [`${prefixCls}-item-middle`]: align === 'middle',
+      [`${prefixCls}-item-bottom`]: align === 'bottom',
+    }), [prefixCls, className, disabled, error, align]
+  )
+  const rippleCls = useMemo(
+    () => classnames(`${prefixCls}-ripple`, {
+      [`${prefixCls}-ripple-animate`]: RippleClicked,
+    }), [prefixCls, RippleClicked]
+  )
+  const lineCls = useMemo(
+    () => classnames(`${prefixCls}-line`, {
+      [`${prefixCls}-line-multiple`]: multipleLine,
+      [`${prefixCls}-line-wrap`]: wrap,
+    }), [prefixCls, multipleLine, wrap]
+  )
+  const arrowCls = useMemo(
+    () => classnames(`${prefixCls}-arrow`, {
+      [`${prefixCls}-arrow-horizontal`]: arrow === 'horizontal',
+      [`${prefixCls}-arrow-vertical`]: arrow === 'down' || arrow === 'up',
+      [`${prefixCls}-arrow-vertical-up`]: arrow === 'up',
+    }), [prefixCls, arrow]
+  )
   // 调整thummb位置使之底部有线
   const content = (
     <div
@@ -111,7 +118,7 @@ const ListItem = (props) => {
       <div style={coverRippleStyle} className={rippleCls} />
     </div>
   )
-  
+
   const touchProps = {};
   Object.keys(restProps).forEach(key => {
     if (/onTouch/i.test(key)) {
@@ -133,7 +140,7 @@ const ListItem = (props) => {
 
 }
 
-ListItem.Brief = function Brief(props){
+ListItem.Brief = function Brief(props) {
   return (
     <div className="xh-list-brief" style={props.style}>
       {props.children}

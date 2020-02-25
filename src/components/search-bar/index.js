@@ -105,7 +105,7 @@ const SearchBar = (props) => {
   const onBlur = () => {
     // 等待doClear, onCancel 函数代码执行完毕后执行
     onBlurTimeout = setTimeout(() => {
-      if (!blurFromOnClear && document.activeElement !== inputRef) setFocus(false)
+      if (!blurFromOnClear && document.activeElement !== inputRef.current) setFocus(false)
       blurFromOnClear = false
     }, 1);
     // fix autoFocus item blur with flash
@@ -219,8 +219,8 @@ SearchBar.propTypes = {
   disabled: PropTypes.bool,
   autoFocus: PropTypes.bool,
   maxLength: PropTypes.number,
-  searchIcon: PropTypes.elementType,
-  cancelIcon: PropTypes.elementType,
+  searchIcon: PropTypes.node,
+  cancelIcon: PropTypes.node,
 }
 
 function noop() { }

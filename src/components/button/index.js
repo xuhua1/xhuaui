@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import React from 'react'
+import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
 import TouchFeedback from 'rmc-feedback'
 import './index.less'
@@ -20,14 +20,16 @@ const Button = (props) => {
     ...restProps
   } = props
 
-  const wrapCls = classnames(prefixCls, className, {
-    [`${prefixCls}-primary`]: type === 'primary',
-    [`${prefixCls}-ghost`]: type === 'ghost',
-    [`${prefixCls}-warning`]: type === 'warning',
-    [`${prefixCls}-small`]: size === 'small',
-    [`${prefixCls}-inline`]: inline,
-    [`${prefixCls}-disabled`]: disabled
-  })
+  const wrapCls = useMemo(
+    () => classnames(prefixCls, className, {
+      [`${prefixCls}-primary`]: type === 'primary',
+      [`${prefixCls}-ghost`]: type === 'ghost',
+      [`${prefixCls}-warning`]: type === 'warning',
+      [`${prefixCls}-small`]: size === 'small',
+      [`${prefixCls}-inline`]: inline,
+      [`${prefixCls}-disabled`]: disabled
+    }), [prefixCls, className, type, size, inline, disabled]
+  )
   return (
     <TouchFeedback
       // tslint:disable-next-line:jsx-no-multiline-js

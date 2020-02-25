@@ -77,9 +77,8 @@
       &::placeholder {
         background: none;
         text-align: left;
-        // color: @color-text-placeholder;
-        color: transparent;
-        // font-size: @input-font-size;
+        color: @color-text-placeholder;
+        font-size: @input-font-size;
       }
 
       &::-webkit-search-cancel-button {
@@ -98,16 +97,16 @@
       border-radius: @radius-circle;
       top: 0;
       right: 0;
-      // background-color: transparent;
+      background-color: transparent;
       // background-position: center;
       // background-repeat: no-repeat;
       // background-size: @icon-size-xxs @icon-size-xxs;
       transition: all .3s;
       // .encoded-svg-background('search_bar_clear');
 
-      // &-active {
-      //   .encoded-svg-background('search_bar_clear_active');
-      // }
+      &-active {
+        color: @input-color-icon-tap;
+      }
 
       &-show {
         display: block;
