@@ -18,7 +18,6 @@ const TextArea = (props) => {
     cancelIcon,
   } = props
   const [focus, setFocus] = useState(false)
-  const [debounceTimeout, setDebounceTimeout] = useState(null)
   const textareaRef = useRef()
 
   const reAlignHeight = useCallback(() => {
@@ -31,27 +30,17 @@ const TextArea = (props) => {
       reAlignHeight()
     }
   }, [autoHeight])
-  useEffect(() => {
-    return () => {
-      if (debounceTimeout) {
-        clearTimeout(debounceTimeout);
-        setDebounceTimeout(null)
-      }
-    }
-  }, [])
 
   const onChange = useCallback((e) => {
     props.onChange(e.target.value)
     if (autoHeight) reAlignHeight()
   }, [props.onChange, autoHeight])
   const onBlur = useCallback((e) => {
-    setDebounceTimeout(
-      setTimeout(() => {
-        if (document.activeElement !== textareaRef.current) {
-          setFocus(false)
-        }
-      }, 100)
-    )
+    setTimeout(() => {
+      if (document.activeElement !== textareaRef.current) {
+        setFocus(false)
+      }
+    }, 100)
     const { value } = e.currentTarget
     // fix autoFocus item blur with flash
     setTimeout(() => {

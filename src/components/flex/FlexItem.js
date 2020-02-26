@@ -1,7 +1,6 @@
 import classnames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-import './index.less'
 
 const FlexItem = (props) => {
   const {

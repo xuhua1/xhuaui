@@ -39,6 +39,7 @@ export default {
   ],
   external: [
     'react',
+    'react-dom',
     'react-router-dom',
     'rmc-feedback',
     'prop-types',
