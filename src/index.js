@@ -12,6 +12,7 @@ import ImagePicker from './components/image-picker/index'
 import Flex from './components/flex/index'
 import Toast from './components/toast/index'
 import Modal from './components/modal/index'
+import Icon from './components/icon/index'
 
 export {
   Button,
@@ -28,4 +29,5 @@ export {
   Flex,
   Toast,
   Modal,
+  Icon,
 }
