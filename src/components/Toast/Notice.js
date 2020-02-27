@@ -25,6 +25,7 @@ class Notice extends Component {
   }
 
   close = () => {
+    this.setState({ shouldClose: true })
     clearTimeout(this.closeTimer)
     this.closeTimer = setTimeout(() => {
       this.props.onClose()
@@ -35,7 +36,7 @@ class Notice extends Component {
     const { prefixCls, className, content, animation } = this.props
     const { shouldClose } = this.state
     const wrapCls = classnames(`${prefixCls}-notice`, className, {
-      [`${prefixCls}-leave`]: shouldClose,
+      [`${prefixCls}-a-leave`]: shouldClose,
     })
     const contentCls = classnames(`${prefixCls}-notice-content`, {
       [`${prefixCls}-a-${animation}`]: true,

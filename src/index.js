@@ -10,7 +10,8 @@ import Input from './components/input/index'
 import TextArea from './components/textarea/index'
 import ImagePicker from './components/image-picker/index'
 import Flex from './components/flex/index'
-import Toast from './components/Toast/index'
+import Toast from './components/toast/index'
+import Modal from './components/modal/index'
 
 export {
   Button,
@@ -26,4 +27,5 @@ export {
   ImagePicker,
   Flex,
   Toast,
+  Modal,
 }

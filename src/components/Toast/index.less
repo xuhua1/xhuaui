@@ -69,7 +69,6 @@
   z-index: @toast-zindex;
   font-size: @font-size-base;
   text-align: center;
-  transition: all .3s;
 
   > span {
     max-width: 50%;
@@ -93,8 +92,14 @@
     top: 50%;
     transform: translateZ(1px);
     .@{toastPrefixCls}-notice {
-      transform: translateX(-50%) translateY(-50%);
+      position: relative;
+      left: -50%;
+      right: -50;
     }
+  }
+
+  &-notice {
+    transition: all .3s;
   }
 
   &-notice-content {
@@ -117,11 +122,6 @@
     }
   }
 
-  &-leave {
-    transform: translate3D(-50%, -100%, 0);
-    opacity: 0;
-  }
-
   &-a-Flop {
     animation: Flop 1s;
   }
@@ -134,4 +134,9 @@
   &-a-Shake {
     animation: Shake 1s;
   }
+}
+
+.@{toastPrefixCls}-a-leave {
+  transform: translate3D(0%, 50%, 0);
+  opacity: 0;
 }
